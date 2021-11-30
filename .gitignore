@@ -30,4 +30,9 @@ build/
 logs
 .vscode
 
+**/constant/
+**/dynamicCode/
 
+# Exclude executables
+geometryWENO/geometryWENOPerformanceTest
+WENOCoeff/WENOCoeffPerformanceTest

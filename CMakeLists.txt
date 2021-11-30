@@ -60,33 +60,11 @@ if (NOT DEFINED ENV{FOAM_USER_LIBBIN} OR NOT DEFINED ENV{FOAM_SRC})
     message(FATAL_ERROR "OpenFOAM environemt variables not available")
 endif()
 
+set(WENOEXT_PATH "/home/jan/Solver/WENOEXT/build/installed")
+message("Current WENOEXT path: ${WENOEXT_PATH}")
 
-#===============================================================================
-#   Create Version File
-#===============================================================================
-
-# Get current git commit
-#execute_process(
-    #COMMAND  git rev-parse --abbrev-ref HEAD
-    #WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    #OUTPUT_VARIABLE GIT_BRANCH
-    #OUTPUT_STRIP_TRAILING_WHITESPACE
-#)
-
-#execute_process(
-    #COMMAND git log -1 --format=%h
-    #WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    #OUTPUT_VARIABLE GIT_COMMIT_HASH
-    #OUTPUT_STRIP_TRAILING_WHITESPACE
-#)
-
-#configure_file(
-    #${CMAKE_SOURCE_DIR}/versionRules/version.h.in
-    #${CMAKE_BINARY_DIR}/generated/version.h
-#)
-
-#include_directories(${CMAKE_BINARY_DIR}/generated)
-
+# Add the WENOEXT library
+include(${WENOEXT_PATH}/lib/cmake/WENOEXT/WENOEXT.cmake)
 
 # Set c++ flags
 add_compile_options(
@@ -103,14 +81,15 @@ set(CMAKE_SHARED_LINKER_FLAGS "-fPIC -Xlinker --add-needed -Xlinker --no-as-need
 add_definitions(-Dlinux64 -DWM_ARCH_OPTION=$ENV{WM_ARCH_OPTION} -DWM_DP -DWM_LABEL_SIZE=$ENV{WM_LABEL_SIZE} -DNoRepository)
 
 
+
+
 #===============================================================================
 #                           Add subdirectories
 #===============================================================================
 
-add_subdirectory(blaze-3.8)
 
-# Directory to build the library
 add_subdirectory(geometryWENO/src)
+add_subdirectory(WENOCoeff/src)
 
 
 

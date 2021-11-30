@@ -84,8 +84,6 @@ int main(int argc, char *argv[])
                 v2[i]
             );
         }
-        // Print result to avoid that it gets optimized out by the compiler
-        std::cerr << test << endl;
         auto stop = std::chrono::high_resolution_clock::now();
 
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
@@ -116,8 +114,6 @@ int main(int argc, char *argv[])
                 v1[i]
             );
         }
-        // Print result to avoid that it gets optimized out by the compiler
-        std::cerr << test << endl;
         auto stop = std::chrono::high_resolution_clock::now();
 
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
