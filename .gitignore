@@ -36,3 +36,4 @@ logs
 # Exclude executables
 geometryWENO/geometryWENOPerformanceTest
 WENOCoeff/WENOCoeffPerformanceTest
+WENOBase/WENOBasePerformanceTest

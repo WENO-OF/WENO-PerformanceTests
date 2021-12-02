@@ -69,7 +69,6 @@ include(${WENOEXT_PATH}/lib/cmake/WENOEXT/WENOEXT.cmake)
 # Set c++ flags
 add_compile_options(
     -m64 
-    -mavx2
     -Wall -Wextra -Wold-style-cast -Wnon-virtual-dtor -Wno-unused-parameter -Wno-invalid-offsetof -Wno-deprecated
     -ftemplate-depth-100
     -O3
@@ -90,6 +89,7 @@ add_definitions(-Dlinux64 -DWM_ARCH_OPTION=$ENV{WM_ARCH_OPTION} -DWM_DP -DWM_LAB
 
 add_subdirectory(geometryWENO/src)
 add_subdirectory(WENOCoeff/src)
+add_subdirectory(WENOBase/src)
 
 
 
