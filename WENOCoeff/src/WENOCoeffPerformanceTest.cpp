@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
         auto stop = std::chrono::high_resolution_clock::now();
 
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-        Info << "\tWENOCoeff (scalar): "<<duration.count()/1000.0 << "ms" << endl;
+        Info << "\tWENOCoeff scalar: "<<duration.count()/1000.0 << "ms" << endl;
     }
 
     // -------------------------------------------------------------------------
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
         auto stop = std::chrono::high_resolution_clock::now();
 
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-        Info << "\tWENOCoeff (scalar): "<<duration.count()/1000.0 << "ms" << endl;
+        Info << "\tWENOCoeff vector: "<<duration.count()/1000.0 << "ms" << endl;
     }
     
     return 0;
