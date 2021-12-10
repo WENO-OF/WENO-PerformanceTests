@@ -60,7 +60,7 @@ if (NOT DEFINED ENV{FOAM_USER_LIBBIN} OR NOT DEFINED ENV{FOAM_SRC})
     message(FATAL_ERROR "OpenFOAM environemt variables not available")
 endif()
 
-set(WENOEXT_PATH "/home/jan/Solver/WENOEXT/build/installed")
+set(WENOEXT_PATH "../WENOEXT/build/installed")
 message("Current WENOEXT path: ${WENOEXT_PATH}")
 
 # Add the WENOEXT library
@@ -68,7 +68,7 @@ include(${WENOEXT_PATH}/lib/cmake/WENOEXT/WENOEXT.cmake)
 
 # Set c++ flags
 add_compile_options(
-    -m64 
+    -march=native 
     -Wall -Wextra -Wold-style-cast -Wnon-virtual-dtor -Wno-unused-parameter -Wno-invalid-offsetof -Wno-deprecated
     -ftemplate-depth-100
     -O3

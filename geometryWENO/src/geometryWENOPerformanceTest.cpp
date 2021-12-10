@@ -119,6 +119,34 @@ int main(int argc, char *argv[])
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
         Info << "\tTransform point: "<<duration.count()/1000.0 << "ms" << endl;
     }
+    // -------------------------------------------------------------------------
+    //                  Performance Test: inverseJacobi 
+    // -------------------------------------------------------------------------
+    {
+        // Create the Jacobi matrix
+        auto J = geometryWENO::jacobi
+        (
+            0, 0, 0,
+            1, 2, 0,
+            0, 1, 1,
+            3, 0, 1
+        );
+        
+        auto start = std::chrono::high_resolution_clock::now();
+        geometryWENO::scalarSquareMatrix JInv;
+        for (size_t i=0; i < maxIter; i++)
+        {
+            geometryWENO::calculateInverseJacobi
+            (
+                J,
+                JInv
+            );
+        }
+        auto stop = std::chrono::high_resolution_clock::now();
+
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+        Info << "\tCalculate Jacobi inverse: "<<duration.count()/1000.0 << "ms" << endl;
+    }
     
     return 0;
 }
